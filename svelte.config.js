@@ -13,7 +13,7 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter(),
 		paths: {
-			relative: false
+			base: process.env.NODE_ENV === 'production' ? '/felicitari-by-ioana' : ''
 		}
 	},
 };

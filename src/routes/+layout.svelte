@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import {
 		Header,
 		HeaderNav,
@@ -75,8 +76,8 @@
 		<SkipToContent />
 	</svelte:fragment>
 	<HeaderNav>
-		<HeaderNavItem href="/produse/fata-pe-leagan" text="Produse" />
-		<HeaderNavItem href="/" text="Contact" />
+		<HeaderNavItem href={resolve('/produse/fata-pe-leagan')} text="Produse" />
+		<HeaderNavItem href={resolve('/')} text="Contact" />
 	</HeaderNav>
 	<HeaderUtilities>
 		<HeaderSearch
