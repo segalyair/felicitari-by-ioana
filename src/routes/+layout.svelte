@@ -75,7 +75,7 @@
 		<SkipToContent />
 	</svelte:fragment>
 	<HeaderNav>
-		<HeaderNavItem href="/" text="Produse" />
+		<HeaderNavItem href="/produse/fata-pe-leagan" text="Produse" />
 		<HeaderNavItem href="/" text="Contact" />
 	</HeaderNav>
 	<HeaderUtilities>
