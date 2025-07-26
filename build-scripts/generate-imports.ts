@@ -1,6 +1,4 @@
 import * as fs from 'fs';
-const productFolders = fs.readdirSync('src/lib/produse');
-
 function generateCase(folder: string) {
 	return `case '${folder}':
 			return {
@@ -26,8 +24,8 @@ function generateCase(folder: string) {
 			};
 `;
 }
-const func = `
-export async function getProductData(id: string | undefined) {
+const productFolders = fs.readdirSync('src/lib/produse');
+const func = `export async function getProductData(id: string | undefined) {
 	switch (id) {
 		// replace with folder name
 		${productFolders.map((folder) => generateCase(folder)).join('')}
@@ -36,4 +34,5 @@ export async function getProductData(id: string | undefined) {
 	}
 }
 `;
-fs.writeFile('src/lib/index.ts', func, (err) => console.error(err));
+
+fs.writeFileSync('src/lib/index.ts', func);
