@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "npx ts-node ./build-scripts/generate-imports.ts && vite dev",
 		"build": "npx ts-node ./build-scripts/generate-imports.ts && vite build",
+		"gh-build": "vite build",
 		"preview": "vite preview",
 		"prepare": "husky",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
