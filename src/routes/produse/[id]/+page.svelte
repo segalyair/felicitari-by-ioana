@@ -3,7 +3,7 @@
 	import type { ProductPageType } from '../../../types/ProductPageData';
 
 	export let data: ProductPageType;
-	emblaCarouselSvelte.globalOptions = { loop: true, align: "start"};
+	emblaCarouselSvelte.globalOptions = { loop: true, align: 'start' };
 </script>
 
 {#if data}
