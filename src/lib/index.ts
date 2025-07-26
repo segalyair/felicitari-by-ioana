@@ -23,6 +23,7 @@ export async function getProductData(id: string | undefined) {
 					}
 				)
 			};
+
 		default:
 			return null;
 	}
