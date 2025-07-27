@@ -1,4 +1,6 @@
-body.body {
-	--cds-code-01-font-family:'Poppins', sans-serif;
-	font-family: var(--cds-code-01-font-family);
+:root{
+	--sl-input-font-family: 'Poppins', sans-serif;
+}
+body {
+	font-family: 'Poppins', sans-serif;
 }

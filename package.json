@@ -43,6 +43,7 @@
 		]
 	},
 	"dependencies": {
+		"@shoelace-style/shoelace": "^2.20.1",
 		"embla-carousel-svelte": "^8.6.0"
 	}
 }

@@ -5,14 +5,12 @@ function generateCase(folder: string) {
 				content: (
 					await import(
 						'$lib/produse/' +
-							// replace with folder name
 							'${folder}' +
 							'/data.json'
 					)
 				).default,
 				images: import.meta.glob<string>(
 					'$lib/produse/' +
-						// replace with folder name
 						'${folder}' +
 						'/poze/*.{jpg,jpeg,png}',
 					{
@@ -24,10 +22,12 @@ function generateCase(folder: string) {
 			};
 `;
 }
-const productFolders = fs.readdirSync('src/lib/produse');
-const func = `export async function getProductData(id: string | undefined) {
+const productFolders = fs
+	.readdirSync('src/lib/produse', { withFileTypes: true })
+	.filter((entry) => entry.isDirectory())
+	.map((entry) => entry.name);
+const func = `export async function getProductDataById(id: string | undefined) {
 	switch (id) {
-		// replace with folder name
 		${productFolders.map((folder) => generateCase(folder)).join('')}
 		default:
 			return null;
@@ -35,4 +35,4 @@ const func = `export async function getProductData(id: string | undefined) {
 }
 `;
 
-fs.writeFileSync('src/lib/index.ts', func);
+fs.writeFileSync('src/lib/produse/byProductId.ts', func);
