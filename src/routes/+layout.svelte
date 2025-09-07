@@ -4,13 +4,15 @@
 	import { resolve } from '$app/paths';
 	import Button from '$lib/components/button.svelte';
 	import { page } from '$app/state';
+
+	let drawer: { open: boolean };
 </script>
 
 <header>
 	<a href={resolve('/')} aria-label="Go to homepage">
 		<img class="logo" src={Logo} width="400" alt="Felicitări by Ioana logo" />
 	</a>
-	<nav class="nav">
+	<nav>
 		<Button href={resolve('/produse')} active={page.url.pathname.includes('/produse')}>
 			Produse
 		</Button>
@@ -20,16 +22,51 @@
 		</Button>
 		<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
 		<Button href={resolve('/contact')} active={page.url.pathname === '/contact'}>Contact</Button>
+		<Button
+			icon={{ name: 'list', size: '40px' }}
+			outline={true}
+			on:click={() => {
+				drawer.open = true;
+			}}
+		></Button>
 	</nav>
 </header>
 
+<sl-drawer bind:this={drawer} label="Meniu" placement="start" class="drawer-placement-start">
+	<nav class="mobile-menu">
+		<Button
+			href={resolve('/produse')}
+			active={page.url.pathname.includes('/produse')}
+			on:click={() => {
+				drawer.open = false;
+			}}
+		>
+			Produse
+		</Button>
+		<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
+		<Button
+			href={resolve('/despre-mine')}
+			active={page.url.pathname === '/despre-mine'}
+			on:click={() => {
+				drawer.open = false;
+			}}
+		>
+			Despre Mine
+		</Button>
+		<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
+		<Button
+			href={resolve('/contact')}
+			active={page.url.pathname === '/contact'}
+			on:click={() => {
+				drawer.open = false;
+			}}>Contact</Button
+		>
+	</nav>
+</sl-drawer>
+
 <main>
 	<slot />
-	<div class="anchor">
-		<div class="main-background">
-			<img class="splash" src={Splash} alt="Splash" width="150" />
-		</div>
-	</div>
+	<div class="main-background" style:--splash={`url(${Splash})`}></div>
 </main>
 
 <footer class="cardboard-bg">
@@ -59,22 +96,6 @@
 </footer>
 
 <style>
-	.nav {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: white;
-		border-radius: 32px;
-		height: 48px;
-		overflow: hidden;
-	}
-	.splash {
-		z-index: -1;
-		position: absolute;
-		top: 64px;
-		right: 64px;
-		opacity: 0.8;
-	}
 	header {
 		max-width: var(--page-max-width);
 		width: 100%;
@@ -85,26 +106,62 @@
 		gap: 8px;
 		margin-top: 32px;
 	}
+	header nav {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		border-radius: 32px;
+		height: 48px;
+		overflow: hidden;
+	}
+	/* sidebar button */
+	header nav > :global(*:last-child) {
+		display: none;
+	}
+	.mobile-menu {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	@media screen and (width <= 862px) {
+		header nav > :global(*:not(:last-child)) {
+			display: none;
+		}
+		header nav > :global(*:last-child) {
+			display: initial;
+		}
+		.logo {
+			max-width: 260px;
+		}
+	}
+	@media screen and (width <= 480px) {
+		header {
+			max-width: calc(var(--page-max-width) + 32px);
+			padding: 0 16px;
+		}
+	}
 
 	main {
 		position: relative;
 		padding: 64px 0;
 		height: 100%;
 	}
-	.anchor {
+	.main-background {
+		z-index: -1;
 		position: absolute;
 		top: 0;
 		width: 1680px;
 		height: inherit;
 		pointer-events: none;
-	}
-	.main-background {
-		position: relative;
-		top: 0;
-		right: 0;
-		width: inherit;
-		height: inherit;
 		overflow: hidden;
+		background: no-repeat top right 90px var(--splash);
+	}
+	@media screen and (width <= 1680px) {
+		.main-background {
+			display: none;
+		}
 	}
 
 	footer {
@@ -117,7 +174,9 @@
 	}
 	footer .content {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
+		justify-content: space-between;
 		height: 100%;
 		color: #30343f;
 	}
@@ -125,13 +184,22 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		gap: 16px;
+		gap: 24px;
 		font-size: 40px;
 		line-height: 1;
 		width: fit-content;
-		margin-left: auto;
 	}
 	footer .socials a {
 		height: 40px;
+	}
+	@media screen and (width <= 480px) {
+		footer {
+			height: 160px;
+		}
+		footer .content {
+			flex-direction: column;
+			justify-content: center;
+			gap: 8px;
+		}
 	}
 </style>

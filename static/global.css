@@ -1,9 +1,11 @@
 @import url('./styles/variables.css');
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  scrollbar-color: var(--primary-color) transparent;
-  scrollbar-width: thin;
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	scrollbar-color: var(--primary-color) transparent;
+	scrollbar-width: thin;
 }
 
 body {
@@ -16,7 +18,6 @@ body {
 	min-height: 100dvh;
 	display: grid;
 	grid-template-rows: auto 1fr auto;
-	
 }
 
 .paper-bg::before {
@@ -41,7 +42,7 @@ body {
 	opacity: 0.8;
 }
 
-.max-page-width{
+.max-page-width {
 	max-width: var(--page-max-width);
 	margin: auto;
 }
@@ -51,10 +52,8 @@ h2,
 h3,
 p,
 span,
-a
- {
+a {
 	color: inherit;
 	margin: 0;
 	text-decoration: none;
 }
-

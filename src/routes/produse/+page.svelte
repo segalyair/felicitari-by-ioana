@@ -44,8 +44,19 @@
 
 	@media screen and (width <= 1300px) {
 		section {
-			/* max widths */
 			grid-template-columns: 1fr 1fr;
+		}
+	}
+	@media screen and (width <= 862px) {
+		section {
+			grid-template-columns: 1fr;
+		}
+	}
+	@media screen and (width <= 480px) {
+		section {
+			max-width: calc(var(--page-max-width) + 32px);
+			padding: 0 16px;
+			gap: 16px;
 		}
 	}
 
@@ -54,6 +65,7 @@
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
+		width: 100%;
 		max-width: 400px;
 		box-shadow:
 			rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
@@ -73,7 +85,6 @@
 		background: white;
 		padding: 16px;
 		width: 100%;
-		max-width: 400px;
 		height: 66px;
 		display: flex;
 		align-items: center;
@@ -83,6 +94,7 @@
 		border-bottom-left-radius: 4px;
 	}
 	.image {
+		width: 100%;
 		max-width: 400px;
 		max-height: 400px;
 		aspect-ratio: 1;

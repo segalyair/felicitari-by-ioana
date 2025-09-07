@@ -1,23 +1,31 @@
 <script lang="ts">
 	export let href: string | undefined = undefined,
-		icon = '',
+		icon = { name: '', size: '24px' },
+		outline: boolean | undefined = undefined,
 		active = false,
 		pill: boolean | undefined = undefined;
 </script>
 
-{#if icon.length > 0}
+{#if icon.name.length > 0}
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<sl-button
 		{href}
 		class="icon primary"
+		style:--icon-size={icon.size ?? '24px'}
 		data-active={active}
+		data-outline={outline}
 		variant="default"
 		size="medium"
 		circle
+		on:click
 	>
-		<sl-icon name={icon}></sl-icon>
+		<sl-icon name={icon.name}></sl-icon>
 	</sl-button>
 {:else}
-	<sl-button {href} variant="text" data-active={active} {pill} class="sl-button primary">
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<sl-button {href} variant="text" data-active={active} {pill} class="sl-button primary" on:click>
 		<slot />
 	</sl-button>
 {/if}
@@ -31,7 +39,12 @@
 		background-color: var(--highlight-color);
 	}
 	.icon::part(base) {
-		font-size: 24px;
+		font-size: var(--icon-size);
+	}
+	.icon[data-outline='true']::part(base) {
+		background-color: unset;
+		color: var(--primary-color);
+		border: none;
 	}
 	.sl-button::part(base) {
 		/* Set design tokens for height and border width */
@@ -40,8 +53,5 @@
 		min-width: 120px;
 		/* border-radius: 32px; */
 		font-size: 1.125rem;
-	}
-
-	.sl-button.primary::part(base):focus-visible {
 	}
 </style>

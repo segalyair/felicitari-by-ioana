@@ -4,9 +4,9 @@
 
 	/* colors */
 	--primary-color: #89023d;
-	--highlight-color: #EA639C;
+	--highlight-color: #ea639c;
 	--background-color-light: #ffd8d9;
-	--text-color-dark: #1B2121;
+	--text-color-dark: #1b2121;
 	--text-color-light: white;
 
 	/* max widths */
@@ -18,8 +18,15 @@
 }
 
 @media screen and (width <= 1300px) {
-  :root {
-	/* max widths */
-	--page-max-width: 900px;
+	:root {
+		/* max widths */
+		--page-max-width: 830px;
+	}
 }
+
+@media screen and (width <= 862px) {
+	:root {
+		/* max widths */
+		--page-max-width: 400px;
+	}
 }
