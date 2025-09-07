@@ -11,9 +11,9 @@
 		<img class="logo" src={Logo} width="400" alt="Felicitări by Ioana logo" />
 	</a>
 	<nav class="nav">
-		<Button href={resolve('/produse')} active={page.url.pathname.includes('/produse')}
-			>Produse</Button
-		>
+		<Button href={resolve('/produse')} active={page.url.pathname.includes('/produse')}>
+			Produse
+		</Button>
 		<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
 		<Button href={resolve('/despre-mine')} active={page.url.pathname === '/despre-mine'}>
 			Despre Mine
@@ -88,14 +88,8 @@
 		position: relative;
 		width: 100%;
 		height: 120px;
-		background-color: color-mix(in srgb, var(--background-color-light), transparent 33%);
+		background-color: color-mix(in srgb, var(--background-color-light), transparent 20%);
 		box-shadow: rgba(33, 35, 38, 0.1) 0px -15px 14px -4px;
-		/* transform: rotate(2deg); */
-	}
-	footer .logo {
-		/* background-color: white;
-		border-radius: 8px;
-		padding: 8px; */
 	}
 	footer .content {
 		display: flex;
