@@ -9,7 +9,7 @@
 </script>
 
 <header>
-	<a href={resolve('/')} aria-label="Go to homepage">
+	<a href={resolve('/')} aria-label="Dute spre pagina principală">
 		<img class="logo" src={Logo} width="400" alt="Felicitări by Ioana logo" />
 	</a>
 	<nav>
@@ -25,7 +25,7 @@
 			Contact
 		</Button>
 		<Button
-			icon={{ name: 'list', size: '40px' }}
+			icon={{ name: 'list', size: '40px', label: 'Deschide meniul' }}
 			outline={true}
 			on:click={() => {
 				drawer.open = true;
@@ -73,7 +73,7 @@
 
 <footer class="cardboard-bg">
 	<div class="max-page-width content">
-		<a href={resolve('/')} aria-label="Go to homepage">
+		<a href={resolve('/')} aria-label="Dute spre pagina principală">
 			<img class="logo" src={Logo} width="250" alt="Felicitări by Ioana logo" />
 		</a>
 		<div class="socials">
@@ -81,7 +81,7 @@
 				href="https://www.facebook.com/share/1JiRAMQwCc/"
 				target="_blank"
 				rel="nofollow"
-				aria-label="Go to Facebook"
+				aria-label="Dute spre Facebook"
 			>
 				<sl-icon name={'facebook'}></sl-icon>
 			</a>
@@ -89,7 +89,7 @@
 				href="https://www.instagram.com/felicitari_by_ioana/"
 				target="_blank"
 				rel="nofollow"
-				aria-label="Go to Instagram"
+				aria-label="Dute spre Instagram"
 			>
 				<sl-icon name={'instagram'}></sl-icon>
 			</a>

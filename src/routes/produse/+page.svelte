@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import Button from '$lib/components/button.svelte';
 
 	export let data;
 	const mock = [
@@ -14,11 +13,21 @@
 	];
 </script>
 
+<svelte:head>
+	<title>Felicitări by Ioana - Produse</title>
+	<meta name="description" content="Produse Handcraft by Ioana" />
+</svelte:head>
+
 <section>
-	{#each mock as product}
+	{#each mock as product, index}
 		<a href={resolve(`/produse/${product.content.id}`)} class="card">
 			{#if product.thumbnail}
-				<img class="image" src={Object.values(product.thumbnail)[0]} alt="O poza" />
+				<img
+					class="image"
+					fetchpriority={index === 0 ? 'high' : 'auto'}
+					src={Object.values(product.thumbnail)[0]}
+					alt="O poza"
+				/>
 			{/if}
 			<div class="caption">
 				<p class="title">{product.content.title}</p>

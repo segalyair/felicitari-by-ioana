@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let href: string | undefined = undefined,
-		icon = { name: '', size: '24px' },
+		icon = { name: '', size: '24px', label: 'none' },
 		outline: boolean | undefined = undefined,
 		active = false,
 		pill: boolean | undefined = undefined;
@@ -17,6 +17,7 @@
 		data-outline={outline}
 		variant="default"
 		size="medium"
+		aria-label={icon.label}
 		circle
 		on:click
 	>
