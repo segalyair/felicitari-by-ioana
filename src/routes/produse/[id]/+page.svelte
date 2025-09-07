@@ -3,20 +3,22 @@
 	import type { ProductPageType } from '../../../types/ProductPageData';
 
 	export let data: ProductPageType;
-	emblaCarouselSvelte.globalOptions = { loop: true, align: 'start' };
+	emblaCarouselSvelte.globalOptions = { loop: true, align: 'center' };
 </script>
 
 {#if data}
-	<h1>{data.content.title}</h1>
-	<div class="embla" use:emblaCarouselSvelte>
-		<div class="embla__container">
-			{#each Object.values(data.images ?? {}) as image}
-				<div class="slide">
-					<img class="image" src={image} alt="O poza" />
-				</div>
-			{/each}
+	<section class="max-page-width">
+		<h1>{data.content.title}</h1>
+		<div class="embla" use:emblaCarouselSvelte>
+			<div class="embla__container">
+				{#each Object.values(data.images ?? {}) as image}
+					<div class="slide">
+						<img class="image" src={image} alt="O poza" />
+					</div>
+				{/each}
+			</div>
 		</div>
-	</div>
+	</section>
 {/if}
 
 <style>

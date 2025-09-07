@@ -1,7 +1,6 @@
-<h1>Welcome to Felicitări by Ioana</h1>
+<script>
+	import Button from '$lib/components/button.svelte';
+</script>
 
 <style>
-	h1 {
-		text-align: center;
-	}
 </style>

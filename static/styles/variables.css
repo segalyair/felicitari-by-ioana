@@ -1,0 +1,18 @@
+:root {
+	/* shoelace */
+	--sl-input-font-family: 'Poppins', sans-serif;
+
+	/* colors */
+	--primary-color: #89023d;
+	--highlight-color: #EA639C;
+	--background-color-light: #ffd8d9;
+	--text-color-dark: #1B2121;
+	--text-color-light: white;
+
+	/* max widths */
+	--page-max-width: 1260px;
+
+	/* 
+	TEXT #30343F
+	*/
+}

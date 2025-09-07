@@ -1,6 +1,58 @@
-:root{
-	--sl-input-font-family: 'Poppins', sans-serif;
+@import url('./styles/variables.css');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  scrollbar-color: var(--primary-color) transparent;
+  scrollbar-width: thin;
 }
+
 body {
+	position: relative;
 	font-family: 'Poppins', sans-serif;
+	color: var(--text-color-dark);
+	margin: 0;
+	overflow-x: hidden;
+	min-width: 100dvw;
+	min-height: 100dvh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	
 }
+
+.paper-bg::before{
+	z-index: -1;
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 100%;
+	background: repeat url('../src/lib/images/paper-bg-modified.jpg');
+	opacity: 0.2;
+}
+.cardboard-bg::before{
+	z-index: -1;
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 100%;
+	background: repeat url('../src/lib/images/cardboard-bg.jpg');
+	filter: grayscale(100%);
+	opacity: 0.8;
+}
+
+.max-page-width{
+	max-width: var(--page-max-width);
+	margin: auto;
+}
+
+h1,
+h2,
+h3,
+p,
+span,
+a
+ {
+	color: inherit;
+	margin: 0;
+	text-decoration: none;
+}
+
