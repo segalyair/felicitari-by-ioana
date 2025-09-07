@@ -25,7 +25,11 @@
 
 <main>
 	<slot />
-	<img class="splash" src={Splash} alt="Splash" width="150" />
+	<div class="anchor">
+		<div class="main-background">
+			<img class="splash" src={Splash} alt="Splash" width="150" />
+		</div>
+	</div>
 </main>
 
 <footer class="cardboard-bg">
@@ -65,9 +69,10 @@
 		overflow: hidden;
 	}
 	.splash {
+		z-index: -1;
 		position: absolute;
-		top: 128px;
-		right: 128px;
+		top: 64px;
+		right: 64px;
 		opacity: 0.8;
 	}
 	header {
@@ -80,9 +85,28 @@
 		gap: 8px;
 		margin-top: 32px;
 	}
+
 	main {
+		position: relative;
 		padding: 64px 0;
+		height: 100%;
 	}
+	.anchor {
+		position: absolute;
+		top: 0;
+		width: 1680px;
+		height: inherit;
+		pointer-events: none;
+	}
+	.main-background {
+		position: relative;
+		top: 0;
+		right: 0;
+		width: inherit;
+		height: inherit;
+		overflow: hidden;
+	}
+
 	footer {
 		margin-top: 64px;
 		position: relative;

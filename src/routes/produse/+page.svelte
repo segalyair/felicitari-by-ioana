@@ -32,13 +32,23 @@
 
 <style>
 	section {
-		width: 100%;
+		width: fit-content;
 		max-width: var(--page-max-width);
 		margin: auto;
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
+		justify-items: center;
 		gap: 30px;
+		grid-auto-flow: dense;
 	}
+
+	@media screen and (width <= 1300px) {
+		section {
+			/* max widths */
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
 	.card {
 		display: flex;
 		align-items: center;

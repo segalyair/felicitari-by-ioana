@@ -16,3 +16,10 @@
 	TEXT #30343F
 	*/
 }
+
+@media screen and (width <= 1300px) {
+  :root {
+	/* max widths */
+	--page-max-width: 900px;
+}
+}
