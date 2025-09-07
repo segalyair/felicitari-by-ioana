@@ -17,11 +17,13 @@
 			Produse
 		</Button>
 		<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
-		<Button href={resolve('/despre-mine')} active={page.url.pathname === '/despre-mine'}>
+		<Button href={resolve('/despre-mine')} active={page.url.pathname.includes('/despre-mine')}>
 			Despre Mine
 		</Button>
 		<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
-		<Button href={resolve('/contact')} active={page.url.pathname === '/contact'}>Contact</Button>
+		<Button href={resolve('/contact')} active={page.url.pathname.includes('/contact')}>
+			Contact
+		</Button>
 		<Button
 			icon={{ name: 'list', size: '40px' }}
 			outline={true}
