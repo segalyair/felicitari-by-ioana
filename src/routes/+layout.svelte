@@ -34,37 +34,39 @@
 	</nav>
 </header>
 
-<sl-drawer bind:this={drawer} label="Meniu" placement="start" class="drawer-placement-start">
-	<nav class="mobile-menu">
-		<Button
-			href={resolve('/produse')}
-			active={page.url.pathname.includes('/produse')}
-			on:click={() => {
-				drawer.open = false;
-			}}
-		>
-			Produse
-		</Button>
-		<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
-		<Button
-			href={resolve('/despre-mine')}
-			active={page.url.pathname === '/despre-mine'}
-			on:click={() => {
-				drawer.open = false;
-			}}
-		>
-			Despre Mine
-		</Button>
-		<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
-		<Button
-			href={resolve('/contact')}
-			active={page.url.pathname === '/contact'}
-			on:click={() => {
-				drawer.open = false;
-			}}>Contact</Button
-		>
-	</nav>
-</sl-drawer>
+<div style:display={drawer ? 'initial' : 'none'}>
+	<sl-drawer bind:this={drawer} label="Meniu" placement="start">
+		<nav class="mobile-menu">
+			<Button
+				href={resolve('/produse')}
+				active={page.url.pathname.includes('/produse')}
+				on:click={() => {
+					drawer.open = false;
+				}}
+			>
+				Produse
+			</Button>
+			<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
+			<Button
+				href={resolve('/despre-mine')}
+				active={page.url.pathname === '/despre-mine'}
+				on:click={() => {
+					drawer.open = false;
+				}}
+			>
+				Despre Mine
+			</Button>
+			<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
+			<Button
+				href={resolve('/contact')}
+				active={page.url.pathname === '/contact'}
+				on:click={() => {
+					drawer.open = false;
+				}}>Contact</Button
+			>
+		</nav>
+	</sl-drawer>
+</div>
 
 <main>
 	<slot />
