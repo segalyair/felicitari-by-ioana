@@ -1,5 +1,6 @@
 import * as fs from 'fs';
-const IMAGE_WIDTH = 400;
+const IMAGE_WIDTH = 600;
+const CAROUSEL_THUMBNAIL_WIDTH = 100;
 
 function generateCase(folder: string) {
 	return `case '${folder}':
@@ -17,6 +18,16 @@ function generateCase(folder: string) {
 						'/poze/*.{jpg,jpeg,png}',
 					{
 						query: '?aspect=1:1&w=${IMAGE_WIDTH}&format=webp',
+						eager: true,
+						import: 'default'
+					}
+				),
+				carouselThumbnails: import.meta.glob<string>(
+					'$lib/produse/' +
+						'${folder}' +
+						'/poze/*.{jpg,jpeg,png}',
+					{
+						query: '?aspect=1:1&w=${CAROUSEL_THUMBNAIL_WIDTH}&format=webp',
 						eager: true,
 						import: 'default'
 					}

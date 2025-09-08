@@ -9,6 +9,9 @@
 	--text-color-dark: #1b2121;
 	--text-color-light: white;
 
+	/* shadows */
+	--card-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
 	/* max widths */
 	--page-max-width: 1260px;
 
