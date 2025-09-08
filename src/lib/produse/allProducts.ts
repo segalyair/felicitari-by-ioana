@@ -6,7 +6,7 @@ export async function getProducts() {
 		.filter((entry) => entry.isDirectory())
 		.map((entry) => entry.name);
 	const allImages = import.meta.glob<string>('$lib/produse/**/*.{jpg,jpeg,png}', {
-		query: '?w=500&format=webp',
+		query: `?aspect=1:1&w=400&format=webp`,
 		eager: true,
 		import: 'default'
 	});
