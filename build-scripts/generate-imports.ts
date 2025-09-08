@@ -16,7 +16,7 @@ function generateCase(folder: string) {
 						'${folder}' +
 						'/poze/*.{jpg,jpeg,png}',
 					{
-						query: '?w=${IMAGE_WIDTH}&format=webp',
+						query: '?aspect=1:1&w=${IMAGE_WIDTH}&format=webp',
 						eager: true,
 						import: 'default'
 					}

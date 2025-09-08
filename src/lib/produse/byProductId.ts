@@ -14,7 +14,7 @@ export async function getProductDataById(id: string | undefined) {
 						'fata-pe-leagan' +
 						'/poze/*.{jpg,jpeg,png}',
 					{
-						query: '?w=400&format=webp',
+						query: '?aspect=1:1&w=400&format=webp',
 						eager: true,
 						import: 'default'
 					}
