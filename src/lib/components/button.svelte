@@ -17,7 +17,7 @@
 		data-outline={outline}
 		variant="default"
 		size="medium"
-		aria-label={icon.label}
+		label={icon.label}
 		circle
 		on:click
 	>

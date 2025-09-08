@@ -1,4 +1,6 @@
 import * as fs from 'fs';
+const IMAGE_WIDTH = 400;
+
 function generateCase(folder: string) {
 	return `case '${folder}':
 			return {
@@ -14,7 +16,7 @@ function generateCase(folder: string) {
 						'${folder}' +
 						'/poze/*.{jpg,jpeg,png}',
 					{
-						query: '?w=500&format=webp',
+						query: '?w=${IMAGE_WIDTH}&format=webp',
 						eager: true,
 						import: 'default'
 					}
