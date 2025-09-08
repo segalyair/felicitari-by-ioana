@@ -4,15 +4,20 @@
 	import { resolve } from '$app/paths';
 	import Button from '$lib/components/button.svelte';
 	import { page } from '$app/state';
+	import { beforeNavigate } from '$app/navigation';
 
 	let drawer: { open: boolean };
+
+	beforeNavigate(() => {
+		drawer.open = false;
+	});
 </script>
 
 <header>
 	<a href={resolve('/')} aria-label="Dute spre pagina principală">
 		<img class="logo" src={Logo} width="400" alt="Felicitări by Ioana logo" />
 	</a>
-	<nav>
+	<nav class="header-menu">
 		<Button href={resolve('/produse')} active={page.url.pathname.includes('/produse')}>
 			Produse
 		</Button>
@@ -33,40 +38,6 @@
 		></Button>
 	</nav>
 </header>
-
-<div style:display={drawer ? 'initial' : 'none'}>
-	<sl-drawer bind:this={drawer} label="Meniu" placement="start">
-		<nav class="mobile-menu">
-			<Button
-				href={resolve('/produse')}
-				active={page.url.pathname.includes('/produse')}
-				on:click={() => {
-					drawer.open = false;
-				}}
-			>
-				Produse
-			</Button>
-			<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
-			<Button
-				href={resolve('/despre-mine')}
-				active={page.url.pathname === '/despre-mine'}
-				on:click={() => {
-					drawer.open = false;
-				}}
-			>
-				Despre Mine
-			</Button>
-			<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
-			<Button
-				href={resolve('/contact')}
-				active={page.url.pathname === '/contact'}
-				on:click={() => {
-					drawer.open = false;
-				}}>Contact</Button
-			>
-		</nav>
-	</sl-drawer>
-</div>
 
 <main>
 	<slot />
@@ -99,6 +70,22 @@
 	</div>
 </footer>
 
+<div style:display={drawer ? 'initial' : 'none'}>
+	<sl-drawer bind:this={drawer} label="Meniu" placement="start">
+		<nav class="mobile-menu">
+			<Button href={resolve('/produse')} active={page.url.pathname.includes('/produse')}>
+				Produse
+			</Button>
+			<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
+			<Button href={resolve('/despre-mine')} active={page.url.pathname === '/despre-mine'}>
+				Despre Mine
+			</Button>
+			<div style="height:100%;width:2px;min-width:1px;background-color:white;"></div>
+			<Button href={resolve('/contact')} active={page.url.pathname === '/contact'}>Contact</Button>
+		</nav>
+	</sl-drawer>
+</div>
+
 <style>
 	header {
 		max-width: var(--page-max-width);
@@ -110,7 +97,7 @@
 		gap: 8px;
 		margin-top: 32px;
 	}
-	header nav {
+	header .header-menu {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -118,9 +105,9 @@
 		border-radius: 32px;
 		height: 48px;
 		overflow: hidden;
+		margin-left: auto;
 	}
-	/* sidebar button */
-	header nav > :global(*:last-child) {
+	header .header-menu > :global(*:last-child) {
 		display: none;
 	}
 	.mobile-menu {
@@ -130,10 +117,10 @@
 	}
 
 	@media screen and (width <= 862px) {
-		header nav > :global(*:not(:last-child)) {
+		header .header-menu > :global(*:not(:last-child)) {
 			display: none;
 		}
-		header nav > :global(*:last-child) {
+		header .header-menu > :global(*:last-child) {
 			display: initial;
 		}
 		.logo {
